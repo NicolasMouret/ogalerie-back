@@ -91,7 +91,12 @@ const dataMapper = {
             }
         }
         catch (err) {
+            //if nickname already exists
+            if (err.message === 'duplicate key value violates unique constraint "person_nickname_key"') {
+                error = new APIError('Pseudo déjà utilisé', 403);
+            } else {
             error = new APIError(err.message, 500, err);
+            }
         }
 
         return {error, user};

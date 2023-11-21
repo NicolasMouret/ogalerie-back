@@ -7,18 +7,18 @@ SEEDS := seedOgalerie.pgsql # seeding.pgsql
 all: database tables functions populate update
 
 drop_database:
-	sudo -u postgres dropdb $(DEBUG) -U postgres --if-exists $(DB)
+	sudo -u nico dropdb $(DEBUG) -U nico --if-exists $(DB)
 
 drop_users: drop_database
-	sudo -u postgres dropuser $(DEBUG) -U postgres --if-exists $(DB)_admin
-	sudo -u postgres dropuser $(DEBUG) -U postgres --if-exists $(DB)_api
+	sudo -u nico dropuser $(DEBUG) -U nico --if-exists $(DB)_admin
+	sudo -u nico dropuser $(DEBUG) -U nico --if-exists $(DB)_api
 
 users: drop_users
-	sudo -u postgres createuser $(DEBUG) -U postgres --no-login $(DB)_admin
-	sudo -u postgres createuser $(DEBUG) -U postgres --login --pwprompt -g $(DB)_admin --no-inherit $(DB)_api
+	sudo -u nico createuser $(DEBUG) -U nico --no-login $(DB)_admin
+	sudo -u nico createuser $(DEBUG) -U nico --login --pwprompt -g $(DB)_admin --no-inherit $(DB)_api
 
 database: drop_database users
-	sudo -u postgres createdb $(DEBUG) -U postgres -O $(DB)_admin $(DB)
+	sudo -u nico createdb $(DEBUG) -U nico -O $(DB)_admin $(DB)
 
 tables: create_tables.pgsql
 	$(PG) -W -U $(DB)_api -d $(DB) -f $<
