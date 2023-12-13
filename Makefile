@@ -7,7 +7,7 @@ functions:
 	make -C src/data functions
 
 build:
-	make -C src build
+	make -d -C src build
 
 start:
 	make -C src start

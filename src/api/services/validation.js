@@ -12,7 +12,7 @@ const schemaUserInput = Joi.object({
     situation:Joi.string().pattern(/^(?:user|creator|admin)?$/).required(),
     birthday:Joi.string().pattern(/^\d{4}(?:-\d{2}){2}$/).required(),
     firstname:Joi.string().pattern(/^[\d\p{L}\p{M} -]{3,32}$/um),
-    lastname:Joi.string().pattern(/^[\d\p{L}\p{M} -]{3,32}$/um),
+    lastname:Joi.string().pattern(/^[\d\p{L}\p{M} -]{2,32}$/um),
     town:Joi.string().pattern(/[a-zA-Z-]{2,24}$/),
     country:Joi.string().pattern(/[a-zA-Z-]{2,32}$/),
     avatar:Joi.string(),

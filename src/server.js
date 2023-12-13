@@ -36,15 +36,15 @@ app.listen(PORT, () => {
     console.log(`listening at http://localhost:${PORT} …`);
 });
 
-try {
-    const server = https.createServer({
-        key: fs.readFileSync(`${__dirname}/../ssl/privkey.pem`),
-        cert: fs.readFileSync(`${__dirname}/../ssl/fullchain.pem`),
-    }, app);
+// try {
+//     const server = https.createServer({
+//         key: fs.readFileSync(`${__dirname}/../ssl/privkey.pem`),
+//         cert: fs.readFileSync(`${__dirname}/../ssl/fullchain.pem`),
+//     }, app);
 
-    (async () => {
-        await server.listen(PORTS);
-    })();
-} catch (err) {
-    console.error(err);
-}
+//     (async () => {
+//         await server.listen(PORTS);
+//     })();
+// } catch (err) {
+//     console.error(err);
+// }
